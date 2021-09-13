@@ -2,17 +2,15 @@ using NUnit.Framework;
 
 namespace SeleniumDemo_FB
 {
-    public class Tests
+    public class Tests:BaseClass.BaseClass
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
 
         [Test]
-        public void Test1()
+        public void Input_Email_Password()
         {
-            Assert.Pass();
+            Pages.LoginPage.Assert_Titleof_Webpage(driver);
+            Pages.LoginPage.Login_To_Facebook(driver);
         }
+        
     }
 }
