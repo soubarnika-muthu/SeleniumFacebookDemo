@@ -1,16 +1,22 @@
+/*Project: Automation Testing using Selenium-FaceBook 
+ *Author: Soubarnika Muthu V
+ *Date: 09/09/2021
+ */
 using NUnit.Framework;
 
 namespace SeleniumDemo_FB
 {
-    public class Tests:BaseClass.BaseClass
+    public class Tests: BaseClass.BaseClass
     {
 
         [Test]
-        public void Input_Email_Password()
+        public void TestInput_Password()
         {
-            Pages.LoginPage.Assert_Titleof_Webpage(driver);
-            Pages.LoginPage.Login_To_Facebook(driver);
+            DoAction.DoAction.Assert_Titleof_Webpage(driver);
+            DoAction.DoAction.LogintoFacebook(driver);
+           
         }
-        
+
+
     }
 }

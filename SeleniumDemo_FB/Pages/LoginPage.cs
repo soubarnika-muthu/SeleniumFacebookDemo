@@ -5,6 +5,7 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.PageObjects;
 using System;
 
 namespace SeleniumDemo_FB.Pages
@@ -12,33 +13,20 @@ namespace SeleniumDemo_FB.Pages
     public class LoginPage
     {
 
-        public static void Assert_Titleof_Webpage(IWebDriver driver)
+        public LoginPage(IWebDriver driver)
         {
-            string title1 = "Facebook - உள்நுழையவும் அல்லது பதிவுசெய்யவும்";
-            string title = driver.Title;
-            Assert.AreEqual(title1, title);
+            PageFactory.InitElements(driver, this);
+
         }
-        public static void Login_To_Facebook(IWebDriver driver)
-        {
-            //Iwebelement interface
-            IWebElement email = driver.FindElement(By.Name("email"));
-            //Sendkeys method to type text 
-            email.SendKeys("abc@gmail.com");
+        [FindsBy(How = How.Id, Using = "email")]
 
-            IWebElement password = driver.FindElement(By.Id("pass"));
-            password.SendKeys("12345");
+        public IWebElement email;
 
-            IWebElement login = driver.FindElement(By.Name("login"));
-            login.Click();
+        [FindsBy(How = How.Id, Using = "pass")]
+        public IWebElement password;
 
-            //implicit wait
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
-
-            //Explicit wait
-
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-            wait.IgnoreExceptionTypes(typeof(NoSuchElementException));
-        }
+        [FindsBy(How = How.Name, Using = "login")]
+        public IWebElement loginbt;
 
     }
 }
